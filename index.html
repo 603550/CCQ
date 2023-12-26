@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Confidential Client Questionnaire</title>
-     <style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
         body {
@@ -24,7 +24,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: -100px; /* Adjust this value to move the form upwards */
+            margin-top: -100px;
         }
 
         .card h2 {
@@ -32,11 +32,19 @@
             color: #333;
         }
 
-        .card label {
-            color: #333;
+        .form-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 10px;
+            width: 100%;
         }
 
-        .card input, .card select, .card button {
+        .form-grid label {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .form-grid input, .form-grid select, .form-grid button {
             font-family: 'Fira Code', monospace;
             width: 100%;
             padding: 5px;
@@ -50,105 +58,53 @@
             font-family: 'Fira Code', monospace;
             margin: auto;
         }
-
-        .card input.error,
-        .card select.error {
-            border-color: green;
-        }
     </style>
-    <script>
-        function toggleDriversLicense() {
-            var hasLicense = document.getElementById("hasLicenseYes").checked;
-            var licenseSection = document.getElementById("driversLicenseSection");
-            licenseSection.style.display = hasLicense ? "block" : "none";
-        }
-    </script>
-
-    <script>
-    // Function to save data to local storage
-    function saveToLocalStorage() {
-        var inputs = document.querySelectorAll("input, select, textarea");
-        inputs.forEach(function(input) {
-            localStorage.setItem(input.name, input.value);
-        });
-    }
-
-    // Function to load data from local storage
-    function loadFromLocalStorage() {
-        var inputs = document.querySelectorAll("input, select, textarea");
-        inputs.forEach(function(input) {
-            if (localStorage.getItem(input.name)) {
-                input.value = localStorage.getItem(input.name);
-            }
-        });
-    }
-
-    // Event listener to save data on input change
-    document.addEventListener("DOMContentLoaded", function() {
-        var inputs = document.querySelectorAll("input, select, textarea");
-        inputs.forEach(function(input) {
-            input.addEventListener('blur', saveToLocalStorage);
-        });
-        loadFromLocalStorage();
-    });
-</script>
-
 </head>
 <body>
-    <form>
-        <h2>1. Personal Information</h2>
-        
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br>
+    <div class="card">
+        <form>
+            <h2>1. Personal Information</h2>
+           <div class="form-grid">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br>
+    <label for="cellPhone">Cell Phone:</label>
+    <input type="tel" id="cellPhone" name="cellPhone">
 
-        <label for="cellPhone">Cell Phone:</label>
-        <input type="tel" id="cellPhone" name="cellPhone"><br>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
 
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob"><br>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <!-- Add more options as needed -->
+    </select>
 
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select><br>
+    <label for="placeOfBirth">Place of Birth:</label>
+    <input type="text" id="placeOfBirth" name="placeOfBirth">
 
-        <label for="placeOfBirth">Place of Birth:</label>
-        <input type="text" id="placeOfBirth" name="placeOfBirth"><br>
+    <label for="homeAddress">Home Address:</label>
+    <input type="text" id="homeAddress" name="homeAddress">
 
-        <label for="homeAddress">Home Address:</label>
-        <input type="text" id="homeAddress" name="homeAddress"><br>
+    <label for="residentStatus">Resident Status:</label>
+    <select id="residentStatus" name="residentStatus">
+        <option value="citizen">Citizen</option>
+        <option value="resident">Resident</option>
+        <option value="visa">Visa</option>
+        <!-- Add more options as needed -->
+    </select>
 
-        <label for="residentStatus">Resident Status:</label>
-        <select id="residentStatus" name="residentStatus">
-            <option value="citizen">Citizen</option>
-            <option value="resident">Resident</option>
-            <option value="visa">Visa</option>
-        </select><br>
+    <label for="usTaxResident">US Tax Resident?</label>
+    <input type="checkbox" id="usTaxResident" name="usTaxResident" value="yes"> Yes
+    <input type="checkbox" id="usTaxResident" name="usTaxResident" value="no"> No
+</div>
 
-        <label for="usTaxResident">US Tax Resident?</label>
-        <input type="checkbox" id="usTaxResident" name="usTaxResident" value="yes"> Yes
-        <input type="checkbox" id="usTaxResident" name="usTaxResident" value="no"> No<br>
-
-        <h3>Driver's License</h3>
-        <label for="hasLicenseYes">Do you have a driver's license?</label>
-        <input type="radio" id="hasLicenseYes" name="hasLicense" value="yes" onclick="toggleDriversLicense()"> Yes
-        <input type="radio" id="hasLicenseNo" name="hasLicense" value="no" onclick="toggleDriversLicense()"> No<br>
-
-        <div id="driversLicenseSection" style="display:none;">
-            <label for="licenseNumber">License Number:</label>
-            <input type="text" id="licenseNumber" name="licenseNumber"><br>
-
-            <label for="licenseState">State of Issue:</label>
-            <input type="text" id="licenseState" name="licenseState"><br>
-            
-            <!-- Add other driver's license fields as necessary -->
-        </div>
-
-        <input type="submit" value="Submit">
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
