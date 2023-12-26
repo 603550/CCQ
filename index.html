@@ -1,6 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+      <script>
+        function toggleDriversLicense() {
+            var hasLicense = document.getElementById("hasLicenseYes").checked;
+            var licenseSection = document.getElementById("driversLicenseSection");
+            licenseSection.style.display = hasLicense ? "block" : "none";
+        }
+    </script>
+    <script>
+        function clearAllFields() {
+            document.getElementById("myForm").reset();
+        }
+    </script>
+    <script>
+    // Function to save data to local storage
+    function saveToLocalStorage() {
+        var inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(function(input) {
+            localStorage.setItem(input.name, input.value);
+        });
+    }
+
+    // Function to load data from local storage
+    function loadFromLocalStorage() {
+        var inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(function(input) {
+            if (localStorage.getItem(input.name)) {
+                input.value = localStorage.getItem(input.name);
+            }
+        });
+    }
+
+    // Event listener to save data on input change
+    document.addEventListener("DOMContentLoaded", function() {
+        var inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(function(input) {
+            input.addEventListener('blur', saveToLocalStorage);
+        });
+        loadFromLocalStorage();
+    });
+</script>
     <title>Confidential Client Questionnaire</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
