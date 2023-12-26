@@ -1,13 +1,50 @@
-<form>
-    <h2>Personal Information</h2>
-    <label for="fullName">Full Name:</label><br>
-    <input type="text" id="fullName" name="fullName"><br>
-    
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
-    
-    <label for="dob">Date of Birth:</label><br>
-    <input type="date" id="dob" name="dob"><br>
-    
-    <input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confidential Client Questionnaire</title>
+</head>
+<body>
+    <form>
+        <h2>1. Personal Information</h2>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <label for="cellPhone">Cell Phone:</label>
+        <input type="tel" id="cellPhone" name="cellPhone"><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob"><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br>
+
+        <label for="placeOfBirth">Place of Birth:</label>
+        <input type="text" id="placeOfBirth" name="placeOfBirth"><br>
+
+        <label for="homeAddress">Home Address:</label>
+        <input type="text" id="homeAddress" name="homeAddress"><br>
+
+        <label for="residentStatus">Resident Status:</label>
+        <select id="residentStatus" name="residentStatus">
+            <option value="citizen">Citizen</option>
+            <option value="resident">Resident</option>
+            <option value="visa">Visa</option>
+        </select><br>
+
+        <label for="usTaxResident">US Tax Resident?</label>
+        <input type="checkbox" id="usTaxResident" name="usTaxResident" value="yes"> Yes
+        <input type="checkbox" id="usTaxResident" name="usTaxResident" value="no"> No<br>
+
+        <!-- Add other fields as necessary -->
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
