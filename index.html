@@ -9,6 +9,36 @@
             licenseSection.style.display = hasLicense ? "block" : "none";
         }
     </script>
+
+    <script>
+    // Function to save data to local storage
+    function saveToLocalStorage() {
+        var inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(function(input) {
+            localStorage.setItem(input.name, input.value);
+        });
+    }
+
+    // Function to load data from local storage
+    function loadFromLocalStorage() {
+        var inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(function(input) {
+            if (localStorage.getItem(input.name)) {
+                input.value = localStorage.getItem(input.name);
+            }
+        });
+    }
+
+    // Event listener to save data on input change
+    document.addEventListener("DOMContentLoaded", function() {
+        var inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(function(input) {
+            input.addEventListener('blur', saveToLocalStorage);
+        });
+        loadFromLocalStorage();
+    });
+</script>
+
 </head>
 <body>
     <form>
